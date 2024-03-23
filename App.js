@@ -6,6 +6,7 @@ import {
   Text,
   View,
   Image,
+  Pressable,
 } from "react-native";
 
 export default function App() {
@@ -45,8 +46,91 @@ export default function App() {
         </View>
 
         {/* bottom part  */}
-        <View>
-          
+        <View style={{ marginTop: 36 }}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Image
+              source={require("./assets/sun.png")}
+              style={{ height: 50, width: 50 }}
+            />
+            <Text
+              style={{
+                fontSize: 20,
+                color: "#fff",
+                fontWeight: "semibold",
+                marginLeft: 8,
+                letterSpacing: 3,
+              }}
+            >
+              Good Morning
+            </Text>
+          </View>
+          <View style={{ marginTop: 8 }}>
+            <Text>
+              <Text
+                style={{
+                  fontSize: 100,
+                  color: "#fff",
+                  fontWeight: "bold",
+                }}
+              >
+                11:30
+              </Text>
+              <Text
+                style={{
+                  fontSize: 24,
+                  color: "#fff",
+                }}
+              >
+                BST
+              </Text>
+            </Text>
+          </View>
+
+          <View style={{ marginTop: 16 }}>
+            <Text>
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: "#fff",
+                  fontWeight: "bold",
+                  letterSpacing: 3,
+                }}
+              >
+                In London, UK
+              </Text>
+            </Text>
+          </View>
+
+          {/* button  */}
+          <Pressable
+            onPress={() => {}}
+            style={{
+              flexDirection: "row",
+              height: 50,
+              width: 180,
+              backgroundColor: "#fff",
+              borderRadius: 50,
+              marginTop: 50,
+              justifyContent: "space-between",
+              paddingLeft: 16,
+              paddingRight: 6,
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 20,
+                color: "#000",
+                letterSpacing: 3,
+              }}
+            >
+              MORE
+            </Text>
+            <Image
+              source={require("./assets/down.png")}
+              style={{ height: 50, width: 50 }}
+            />
+          </Pressable>
         </View>
       </View>
     </ImageBackground>
