@@ -9,6 +9,37 @@ import {
   Pressable,
 } from "react-native";
 
+const RowView = ({ label, value }) => {
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 8,
+      }}
+    >
+      <View>
+        <Text
+          style={{
+            fontSize: 16,
+            letterSpacing: 2,
+            color: "#303030",
+            textTransform: "uppercase",
+          }}
+        >
+          {label}
+        </Text>
+      </View>
+      <View>
+        <Text style={{ fontSize: 22, fontWeight: "bold", color: "#303030" }}>
+          {value}
+        </Text>
+      </View>
+    </View>
+  );
+};
+
 export default function App() {
   return (
     <ImageBackground source={require("./assets/bg.jpg")} style={{ flex: 1 }}>
@@ -132,6 +163,21 @@ export default function App() {
             />
           </Pressable>
         </View>
+      </View>
+
+      {/* expanded view  */}
+      <View
+        style={{
+          backgroundColor: "#fff",
+          opacity: 0.8,
+          paddingVertical: 48,
+          paddingHorizontal: 26,
+        }}
+      >
+        <RowView label={"current timezone"} value={"Europe / London"} />
+        <RowView label={"day of the year"} value={"295"} />
+        <RowView label={"day of the week"} value={"5"} />
+        <RowView label={"week number"} value={"42"} />
       </View>
     </ImageBackground>
   );
