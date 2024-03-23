@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
 } from "react-native";
 
 export default function App() {
@@ -18,14 +19,34 @@ export default function App() {
           paddingHorizontal: 26,
         }}
       >
+        {/* upper section  */}
         <View style={{ flexDirection: "row" }}>
-          <View>
+          <View style={{ flex: 1 }}>
             <Text style={{ fontSize: 20, color: "#fff" }}>
               Sunshine is delicious, rain is refreshing, wind braces us up, snow
               is exhilarating; there is really no such thing as bad weather,
               only different kinds of good weather.
             </Text>
+            <Text
+              style={{
+                fontSize: 20,
+                color: "#fff",
+                fontWeight: "bold",
+                marginTop: 8,
+              }}
+            >
+              Ada Lavles
+            </Text>
           </View>
+          <Image
+            source={require("./assets/refresh.png")}
+            style={{ height: 50, width: 50 }}
+          />
+        </View>
+
+        {/* bottom part  */}
+        <View>
+          
         </View>
       </View>
     </ImageBackground>
