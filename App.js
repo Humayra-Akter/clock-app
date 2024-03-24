@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import {
   ActivityIndicator,
   ImageBackground,
@@ -7,6 +8,7 @@ import {
   View,
   Image,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
 
 const RowView = ({ label, value }) => {
@@ -41,6 +43,8 @@ const RowView = ({ label, value }) => {
 };
 
 export default function App() {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <ImageBackground source={require("./assets/bg.jpg")} style={{ flex: 1 }}>
       <View
@@ -52,29 +56,31 @@ export default function App() {
         }}
       >
         {/* upper section  */}
-        <View style={{ flexDirection: "row" }}>
-          <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 20, color: "#fff" }}>
-              Sunshine is delicious, rain is refreshing, wind braces us up, snow
-              is exhilarating; there is really no such thing as bad weather,
-              only different kinds of good weather.
-            </Text>
-            <Text
-              style={{
-                fontSize: 20,
-                color: "#fff",
-                fontWeight: "bold",
-                marginTop: 8,
-              }}
-            >
-              Ada Lavles
-            </Text>
+        {!showMore && (
+          <View style={{ flexDirection: "row" }}>
+            <View style={{ flex: 1 }}>
+              <Text style={{ fontSize: 20, color: "#fff" }}>
+                Sunshine is delicious, rain is refreshing, wind braces us up,
+                snow is exhilarating; there is really no such thing as bad
+                weather, only different kinds of good weather.
+              </Text>
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: "#fff",
+                  fontWeight: "bold",
+                  marginTop: 8,
+                }}
+              >
+                Ada Lavles
+              </Text>
+            </View>
+            <Image
+              source={require("./assets/refresh.png")}
+              style={{ height: 50, width: 50 }}
+            />
           </View>
-          <Image
-            source={require("./assets/refresh.png")}
-            style={{ height: 50, width: 50 }}
-          />
-        </View>
+        )}
 
         {/* bottom part  */}
         <View style={{ marginTop: 36 }}>
@@ -133,8 +139,10 @@ export default function App() {
           </View>
 
           {/* button  */}
-          <Pressable
-            onPress={() => {}}
+          <TouchableOpacity
+            onPress={() => {
+              setShowMore(!showMore);
+            }}
             style={{
               flexDirection: "row",
               height: 50,
@@ -155,30 +163,37 @@ export default function App() {
                 letterSpacing: 3,
               }}
             >
-              MORE
+              {showMore ? "LESS" : "MORE"}
             </Text>
+
             <Image
-              source={require("./assets/down.png")}
+              source={
+                showMore
+                  ? require("./assets/up.png")
+                  : require("./assets/down.png")
+              }
               style={{ height: 50, width: 50 }}
             />
-          </Pressable>
+          </TouchableOpacity>
         </View>
       </View>
 
       {/* expanded view  */}
-      <View
-        style={{
-          backgroundColor: "#fff",
-          opacity: 0.8,
-          paddingVertical: 48,
-          paddingHorizontal: 26,
-        }}
-      >
-        <RowView label={"current timezone"} value={"Europe / London"} />
-        <RowView label={"day of the year"} value={"295"} />
-        <RowView label={"day of the week"} value={"5"} />
-        <RowView label={"week number"} value={"42"} />
-      </View>
+      {showMore && (
+        <View
+          style={{
+            backgroundColor: "#fff",
+            opacity: 0.8,
+            paddingVertical: 48,
+            paddingHorizontal: 26,
+          }}
+        >
+          <RowView label={"current timezone"} value={"Europe / London"} />
+          <RowView label={"day of the year"} value={"295"} />
+          <RowView label={"day of the week"} value={"5"} />
+          <RowView label={"week number"} value={"42"} />
+        </View>
+      )}
     </ImageBackground>
   );
 }
