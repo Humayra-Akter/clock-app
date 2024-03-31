@@ -46,7 +46,10 @@ export default function App() {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <ImageBackground source={require("./assets/bg.jpg")} style={{ flex: 1 }}>
+    <ImageBackground
+      source={require("./assets/bg.png")}
+      style={{ flex: 1 }}
+    >
       <View
         style={{
           flex: 1,
@@ -60,24 +63,24 @@ export default function App() {
           <View style={{ flexDirection: "row" }}>
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 20, color: "#fff" }}>
-                Sunshine is delicious, rain is refreshing, wind braces us up,
-                snow is exhilarating; there is really no such thing as bad
-                weather, only different kinds of good weather.
+                “The science of operations, as derived from mathematics more
+                especially, is a science of itself, and has its own abstract
+                truth and value.”
               </Text>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 12,
                   color: "#fff",
-                  fontWeight: "bold",
+                  fontWeight: 400,
                   marginTop: 8,
                 }}
               >
-                Ada Lavles
+                Ada Lovelace
               </Text>
             </View>
             <Image
               source={require("./assets/refresh.png")}
-              style={{ height: 50, width: 50 }}
+              style={{ height: 40, width: 40 }}
             />
           </View>
         )}
