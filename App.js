@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
   ActivityIndicator,
@@ -7,7 +6,6 @@ import {
   Text,
   View,
   Image,
-  Pressable,
   TouchableOpacity,
 } from "react-native";
 
@@ -24,7 +22,7 @@ const RowView = ({ label, value }) => {
       <View>
         <Text
           style={{
-            fontSize: 16,
+            fontSize: 10,
             letterSpacing: 2,
             color: "#303030",
             textTransform: "uppercase",
@@ -34,7 +32,7 @@ const RowView = ({ label, value }) => {
         </Text>
       </View>
       <View>
-        <Text style={{ fontSize: 22, fontWeight: "bold", color: "#303030" }}>
+        <Text style={{ fontSize: 20, fontWeight: 700, color: "#303030" }}>
           {value}
         </Text>
       </View>
@@ -46,10 +44,7 @@ export default function App() {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <ImageBackground
-      source={require("./assets/bg.png")}
-      style={{ flex: 1 }}
-    >
+    <ImageBackground source={require("./assets/bg.png")} style={{ flex: 1 }}>
       <View
         style={{
           flex: 1,
@@ -62,7 +57,7 @@ export default function App() {
         {!showMore && (
           <View style={{ flexDirection: "row" }}>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontSize: 20, color: "#fff" }}>
+              <Text style={{ fontSize: 12, color: "#000", fontWeight: 400 }}>
                 “The science of operations, as derived from mathematics more
                 especially, is a science of itself, and has its own abstract
                 truth and value.”
@@ -70,9 +65,10 @@ export default function App() {
               <Text
                 style={{
                   fontSize: 12,
-                  color: "#fff",
-                  fontWeight: 400,
+                  color: "#000",
+                  fontWeight: 800,
                   marginTop: 8,
+                  letterSpacing: 1,
                 }}
               >
                 Ada Lovelace
@@ -88,15 +84,12 @@ export default function App() {
         {/* bottom part  */}
         <View style={{ marginTop: 36 }}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Image
-              source={require("./assets/sun.png")}
-              style={{ height: 50, width: 50 }}
-            />
+            <Image source={require("./assets/sun.png")} />
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 15,
                 color: "#fff",
-                fontWeight: "semibold",
+                fontWeight: 400,
                 marginLeft: 8,
                 letterSpacing: 3,
               }}
@@ -110,7 +103,7 @@ export default function App() {
                 style={{
                   fontSize: 100,
                   color: "#fff",
-                  fontWeight: "bold",
+                  fontWeight: 700,
                 }}
               >
                 11:30
@@ -130,9 +123,9 @@ export default function App() {
             <Text>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 15,
                   color: "#fff",
-                  fontWeight: "bold",
+                  fontWeight: 700,
                   letterSpacing: 3,
                 }}
               >
@@ -148,8 +141,8 @@ export default function App() {
             }}
             style={{
               flexDirection: "row",
-              height: 50,
-              width: 180,
+              height: 39,
+              width: 115,
               backgroundColor: "#fff",
               borderRadius: 50,
               marginTop: 50,
@@ -161,9 +154,10 @@ export default function App() {
           >
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 12,
                 color: "#000",
-                letterSpacing: 3,
+                letterSpacing: 3.75,
+                fontWeight: 700,
               }}
             >
               {showMore ? "LESS" : "MORE"}
@@ -175,7 +169,6 @@ export default function App() {
                   ? require("./assets/up.png")
                   : require("./assets/down.png")
               }
-              style={{ height: 50, width: 50 }}
             />
           </TouchableOpacity>
         </View>
@@ -189,6 +182,7 @@ export default function App() {
             opacity: 0.8,
             paddingVertical: 48,
             paddingHorizontal: 26,
+            height: 256,
           }}
         >
           <RowView label={"current timezone"} value={"Europe / London"} />
